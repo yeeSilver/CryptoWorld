@@ -11,7 +11,7 @@ function Router({}: IRouterProps) {
     <BrowserRouter>
       <Routes>
         {/* coins스크린 랜더링 홈페이지 */}
-        <Route path="/" element={<Coins />}></Route>
+        <Route path="/CryptoWorld/" element={<Coins />}></Route>
         <Route path="/:coinId/*" element={<Coin />}>
           <Route path="price" element={<Price />}></Route>
           <Route path="chart" element={<Chart />}></Route>

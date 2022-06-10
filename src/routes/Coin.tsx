@@ -161,8 +161,8 @@ interface ICoinProps {}
 
 // eslint-disable-next-line no-empty-pattern
 function Coin({}: ICoinProps) {
-  // const { coinId } = useParams();
-  const coinId = "btc-bitcoin";
+  const { coinId } = useParams();
+  // const coinId = "btc-bitcoin";
   const location = useLocation();
   const state = location.state as ILocation;
 
