@@ -69,7 +69,6 @@ interface CoinInterface {
   is_active: boolean;
   type: string;
 }
-interface ICoinsProps {}
 
 // const handleSave = (coinName: string) => {
 //   localStorage.setItem("coinName", coinName);
@@ -82,6 +81,10 @@ export default function Coins() {
   //리액트쿼리의 훅인 유즈 쿼리가 fetchCoins를 실행하고 함수가 로딩중이라면(isLoading) true값을 반환, 함수가 로딩이 끝나면 false 반환 그리고 함수의 반환 데이터를 data에 저장
   //데이터가 뭔지 ts한테 정의해줘야해 : <CoinInterface[]>
   const { isLoading, data } = useQuery<CoinInterface[]>("allCoins", fetchCoins);
+
+  const handleSave = (coinName: string) => {
+    localStorage.setItem("coinName", coinName);
+  };
   return (
     <>
       <Container>
@@ -104,7 +107,7 @@ export default function Coins() {
 
             {data?.slice(0, 100).map((coin) => (
               // <Coin key={coin.id} onClick={() => handleSave(coin.name)}>
-              <Coin key={coin.id}>
+              <Coin key={coin.id} onClick={() => handleSave(coin.name)}>
                 {/* state는 coins -> coin으로 화면 전환을 할 때 생성되고 전송됨 */}
                 <Link
                   to={`/${coin.id}`}
