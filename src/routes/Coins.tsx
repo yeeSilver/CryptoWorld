@@ -60,6 +60,48 @@ const Icon = styled.img`
   margin-right: 15px;
 `;
 
+const ToggleBox = styled.label`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 42px;
+  height: 26px;
+  border-radius: 15px;
+  background: #bebebe;
+  cursor: pointer;
+  &::after {
+    content: "";
+    display: block;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    margin: 4px 2px 5px;
+    background: #ffffff;
+    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+  }
+`;
+
+const ToggleCheckBox = styled.input`
+  opacity: 0;
+  z-index: 1;
+  border-radius: 15px;
+  width: 42px;
+  height: 26px;
+  &:checked + ${ToggleBox} {
+    background: ${(props) => props.theme.accentColor};
+    &::after {
+      content: "";
+      display: block;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      margin-left: 21px;
+      transition: 0.2s;
+    }
+  }
+`;
+
 interface CoinInterface {
   id: string;
   name: string;
@@ -95,8 +137,11 @@ export default function Coins() {
         </HelmetProvider>
         <Header>
           <Title>Check Out Coins</Title>
-          <button onClick={toggleDarkAtom}>toggle Mode</button>
         </Header>
+        <div style={{ position: "relative" }}>
+          <ToggleCheckBox id="checkbox" type="checkbox" />
+          <ToggleBox onClick={toggleDarkAtom} htmlFor="checkbox" />
+        </div>
         {/* 코인을 다 받아왔을 때만 로딩은 false임.  */}
         {isLoading ? (
           <Loader>Loading...</Loader>
