@@ -195,7 +195,7 @@ function Coin({}: ICoinProps) {
       </HelmetProvider>
       <Header>
         <BackBtn>
-          <Link to={"/"}>
+          <Link to={"/CryptoWorld"}>
             <FiArrowLeftCircle size="36" color={isDark ? "white" : "black"} />
           </Link>
         </BackBtn>
