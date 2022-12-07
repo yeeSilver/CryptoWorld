@@ -6,6 +6,7 @@ import Price from "./routes/Price";
 
 interface IRouterProps {}
 
+// eslint-disable-next-line no-empty-pattern
 function Router({}: IRouterProps) {
   return (
     <BrowserRouter>
